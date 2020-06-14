@@ -1,0 +1,20 @@
+shared:
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
+  username: ranked
+
+development:
+  database: ranked_development
+
+test: &test
+  database: ranked_test
+  owner: ranked
+  username: <%= ENV.fetch('RAILS_TEST_DB_USERNAME') { 'tmorgan' } %>
+  port: <%= ENV.fetch('PGPORT') { 5432 } %>
+
+cypress: *test
+
+production:
+  database: ranked_production
+  password: <%= ENV['RANKED_DATABASE_PASSWORD'] %>
