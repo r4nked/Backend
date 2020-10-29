@@ -39,7 +39,7 @@ In order to develop with the full stack, you will need to check out and run the
 front-end too. An example Procfile that does this:
 
 ```
-backend: cd Backend && rvm 2.7.1@ranked exec rails server
+backend: cd Backend && rvm 2.7.2@ranked exec rails server
 frontend: cd Frontend && yarn serve
 ```
 
