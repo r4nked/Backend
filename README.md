@@ -28,7 +28,7 @@ using Heroku. There is no authentication, nor any need for user accounts. See
 Development
 -----------
 
-The back-end requires Ruby 2.7 and PostgreSQL. You can check out the repository
+The back-end requires Ruby 3.0 and PostgreSQL. You can check out the repository
 and run `bundle` to install all dependencies, then `rails setup` to set up
 the development and test databases.
 
@@ -39,7 +39,7 @@ In order to develop with the full stack, you will need to check out and run the
 front-end too. An example Procfile that does this:
 
 ```
-backend: cd Backend && rvm 2.7.1@ranked exec rails server
+backend: cd Backend && rvm 3.0.0@ranked exec rails server
 frontend: cd Frontend && yarn serve
 ```
 
