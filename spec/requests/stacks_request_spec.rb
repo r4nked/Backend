@@ -17,7 +17,7 @@ RSpec.describe '/stacks', type: :request do
     it "includes rankings if matches are given" do
       matches         = Array.new(stack.pairs_order.size) { %i[first second both].sample }
       encoded_matches = matches.map { |m| StacksController.const_get(:MATCH_TYPES).index(m) }.
-          join('').to_i(4).to_s(36)
+          join.to_i(4).to_s(36)
       get "/stacks/#{stack.to_param}.json?m=#{encoded_matches}"
       expect(response.status).to be(200)
       json = JSON.parse(response.body)

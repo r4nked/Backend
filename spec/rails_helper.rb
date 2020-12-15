@@ -6,6 +6,9 @@ require File.expand_path('../config/environment', __dir__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
+#
+DEFAULT_TIME = ActiveSupport::TimeZone['America/Los_Angeles'].
+    local(1982, 10, 19, 12, 13)
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -77,8 +80,6 @@ RSpec.configure do |config|
   end
 
   # Timecop
-  DEFAULT_TIME = ActiveSupport::TimeZone['America/Los_Angeles'].
-      local(1982, 10, 19, 12, 13)
   config.around :each do |example|
     Timecop.freeze DEFAULT_TIME
     example.run
