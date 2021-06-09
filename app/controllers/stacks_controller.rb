@@ -72,7 +72,7 @@ class StacksController < ApplicationController
   def decode_matches(m)
     num = Integer(m, 36)
     str = num.to_s(4)
-    arr = str.split('')
+    arr = str.chars
     arr.map { |r| MATCH_TYPES[Integer(r)] }
   end
 end
