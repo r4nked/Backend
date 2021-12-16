@@ -8,13 +8,13 @@ development:
   database: ranked_development
 
 test: &test
-  database: ranked_test
+  host: localhost
+  username: <%= ENV.fetch('POSTGRES_USER') { 'tmorgan' } %>
   owner: ranked
-  username: <%= ENV.fetch('RAILS_TEST_DB_USERNAME') { 'tmorgan' } %>
-  port: <%= ENV.fetch('PGPORT') { 5432 } %>
+  password: <%= ENV.fetch('POSTGRES_PASSWORD') { '' } %>
+  database: <%= ENV.fetch('POSTGRES_DB') { 'ranked_test' } %>
 
 cypress: *test
 
 production:
   database: ranked_production
-  password: <%= ENV['RANKED_DATABASE_PASSWORD'] %>
