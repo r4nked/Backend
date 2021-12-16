@@ -27,7 +27,7 @@ RSpec.describe Stack, type: :model do
     let(:stack) { FactoryBot.create :stack }
 
     it "finds a stack by encoded ID" do
-      expect(described_class.find_by_hash!(stack.to_param)).to eql(stack)
+      expect(described_class.find_by_hash!(stack.to_param)).to eql(stack) # rubocop:disable Rails/DynamicFindBy
     end
   end
 

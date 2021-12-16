@@ -59,7 +59,7 @@ class StacksController < ApplicationController
   private
 
   def find_stack
-    @stack = Stack.find_by_hash!(params[:id])
+    @stack = Stack.find_by_hash!(params[:id]) # rubocop:disable Rails/DynamicFindBy
   end
 
   def stack_params
