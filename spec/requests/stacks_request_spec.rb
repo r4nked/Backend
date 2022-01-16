@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe '/stacks', type: :request do
   describe '#show' do
-    let(:stack) { FactoryBot.create :stack }
+    let(:stack) { create :stack }
 
     it "renders the JSON for a stack" do
       get "/stacks/#{stack.to_param}.json"
