@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2) do
-
+ActiveRecord::Schema[7.0].define(version: 2) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
-    t.bigint "stack_id", null: false
+    t.integer "stack_id", null: false
     t.string "name", limit: 126, null: false
     t.index ["stack_id", "name"], name: "index_cards_on_stack_id_and_name", unique: true
     t.index ["stack_id"], name: "index_cards_on_stack_id"
@@ -25,7 +24,7 @@ ActiveRecord::Schema.define(version: 2) do
   create_table "stacks", force: :cascade do |t|
     t.string "name", limit: 126, null: false
     t.text "pairs_order", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
   end
 
   add_foreign_key "cards", "stacks", on_delete: :cascade
