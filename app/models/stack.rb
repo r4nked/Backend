@@ -62,7 +62,7 @@ class Stack < ApplicationRecord
 
   # @private
   def to_param
-    id.to_s(36)
+    id.to_fs(36)
   end
 
   # Locates a stack by its base-36 ID.
