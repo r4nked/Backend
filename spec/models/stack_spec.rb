@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Stack, type: :model do
+RSpec.describe Stack do
   describe '#card_names' do
     it "generates cards from the list of names" do
       stack = build(:stack, card_names: %w[one two three].join("\n"))

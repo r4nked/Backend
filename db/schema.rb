@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2) do
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
-    t.integer "stack_id", null: false
+    t.bigint "stack_id", null: false
     t.string "name", limit: 126, null: false
     t.index ["stack_id", "name"], name: "index_cards_on_stack_id_and_name", unique: true
     t.index ["stack_id"], name: "index_cards_on_stack_id"
