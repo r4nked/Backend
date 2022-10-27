@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "boot"
 
 require "rails"
@@ -39,7 +41,7 @@ module Ranked
     config.generators do |g|
       g.test_framework      :rspec, fixture: true, views: false
       g.integration_tool    :rspec
-      g.fixture_replacement :factory_bot, dir: 'spec/factories'
+      g.fixture_replacement :factory_bot, dir: "spec/factories"
     end
 
     # Don't generate system test files.

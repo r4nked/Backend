@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # RESTful API controller for retrieving information about {Stack stacks}. Used
 # by the Vue.js front-end to populate pages with stack information.
 

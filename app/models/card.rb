@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # A card is an item that can be ranked, as part of a {Stack stack}. If the stack
 # is "baseball teams", one of its cards might be "Oakland A's".
 #

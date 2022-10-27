@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # A stack is a collection of {Card cards} that a user can rank. Each card
 # contains the name of something to be ranked. For example, a stack could group
 # together a bunch of cards with the names of baseball teams on them, and a

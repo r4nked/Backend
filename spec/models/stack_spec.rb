@@ -1,7 +1,9 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe Stack do
-  describe '#card_names' do
+  describe "#card_names" do
     it "generates cards from the list of names" do
       stack = build(:stack, card_names: %w[one two three].join("\n"))
       stack.save!
@@ -15,15 +17,15 @@ RSpec.describe Stack do
     end
   end
 
-  describe '#to_param' do
+  describe "#to_param" do
     let(:stack) { build :stack, id: 12345 }
 
     it "returns the encoded ID" do
-      expect(stack.to_param).to eql('9ix')
+      expect(stack.to_param).to eql("9ix")
     end
   end
 
-  describe '#find_by_hash!' do
+  describe "#find_by_hash!" do
     let(:stack) { create :stack }
 
     it "finds a stack by encoded ID" do
@@ -31,7 +33,7 @@ RSpec.describe Stack do
     end
   end
 
-  describe '#pairs_order' do
+  describe "#pairs_order" do
     let(:stack) { create :stack, card_names: [1, 2, 3, 4].map(&:to_s).join("\n") }
 
     it "is automatically set to a random ordering of all possible pairs" do
@@ -39,7 +41,7 @@ RSpec.describe Stack do
     end
   end
 
-  describe '#rank' do
+  describe "#rank" do
     it "returns Elo rankings given an ordered array of match results" do
       stack   = create(:stack, card_names: (1..9).to_a.join("\n"))
       matches = stack.pairs_order.map do |(first, second)|
@@ -58,7 +60,7 @@ RSpec.describe Stack do
     end
   end
 
-  context '[validations]' do
+  context "[validations]" do
     it "requires at least 2 cards" do
       stack = build(:stack, card_names: "foo")
       expect(stack).not_to be_valid

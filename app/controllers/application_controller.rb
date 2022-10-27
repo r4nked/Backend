@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # @abstract
 #
 # Abstract superclass for all controllers in Ranked.
@@ -62,7 +64,7 @@ class ApplicationController < ActionController::Base
       return display_errors if has_errors?
 
       controller.response.status = :created if post?
-      render 'show'
+      render "show"
     end
 
     protected
