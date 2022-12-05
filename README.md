@@ -22,7 +22,7 @@ URL. This allows users to share their results with others without the
 application needing to save their results to a database.
 
 The backend is a Ruby on Rails application and PostgreSQL database deployed
-using Heroku. There is no authentication, nor any need for user accounts. See
+using Fly.io. There is no authentication, nor any need for user accounts. See
 {ApplicationController} for more information about controller API responses.
 
 Development
@@ -33,7 +33,7 @@ and run `bundle` to install all dependencies, then `rails setup` to set up
 the development and test databases.
 
 Run `rails server` to run the development server. The production files are
-deployed automatically by Heroku once the Travis CI build passes.
+deployed automatically by Fly.io once the Travis CI build passes.
 
 In order to develop with the full stack, you will need to check out and run the
 front-end too. An example Procfile that does this:
