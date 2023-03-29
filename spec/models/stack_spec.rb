@@ -37,7 +37,7 @@ RSpec.describe Stack do
     let(:stack) { create :stack, card_names: [1, 2, 3, 4].map(&:to_s).join("\n") }
 
     it "is automatically set to a random ordering of all possible pairs" do
-      expect(stack.pairs_order).to match_array([[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3]])
+      expect(stack.pairs_order).to contain_exactly([0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3])
     end
   end
 
