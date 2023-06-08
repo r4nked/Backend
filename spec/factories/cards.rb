@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :card do
-    association :stack
+    stack
     sequence(:name) { |i| "Card #{i}" }
   end
 end
