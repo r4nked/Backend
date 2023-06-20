@@ -4,11 +4,11 @@ rvm:
 services:
   - postgresql
 addons:
-  postgresql: "12"
+  postgresql: "15"
   apt:
     packages:
-      - postgresql-12
-      - postgresql-client-12
+      - postgresql-15
+      - postgresql-client-15
 before_install:
   # RUBYGEMS
   - gem update --system
