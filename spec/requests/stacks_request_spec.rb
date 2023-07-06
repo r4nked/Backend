@@ -17,14 +17,14 @@ RSpec.describe "/stacks" do
 
     it "includes rankings if matches are given" do
       matches         = Array.new(stack.pairs_order.size) { %i[first second both].sample }
-      encoded_matches = matches.map { |m| StacksController.const_get(:MATCH_TYPES).index(m) }.
+      encoded_matches = matches.map { StacksController.const_get(:MATCH_TYPES).index(_1) }.
           join.to_i(4).to_fs(36)
       get "/stacks/#{stack.to_param}.json?m=#{encoded_matches}"
       expect(response).to have_http_status(:ok)
       json = response.parsed_body
       expect(json["rankings"]).to be_a(Array)
       results = stack.rank(matches)
-      expect(json["rankings"]).to eql(results.map { |r| {"name" => r.first.name, "ranking" => r.last} })
+      expect(json["rankings"]).to eql(results.map { |(card, rank)| {"name" => card.name, "ranking" => rank} })
     end
   end
 

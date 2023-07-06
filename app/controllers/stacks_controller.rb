@@ -64,9 +64,7 @@ class StacksController < ApplicationController
     @stack = Stack.find_by_hash!(params[:id]) # rubocop:disable Rails/DynamicFindBy
   end
 
-  def stack_params
-    params.require(:stack).permit(:name, :card_names)
-  end
+  def stack_params = params.require(:stack).permit(:name, :card_names)
 
   MATCH_TYPES = [nil, :first, :second, :both].freeze
   private_constant :MATCH_TYPES
@@ -75,6 +73,6 @@ class StacksController < ApplicationController
     num = Integer(m, 36)
     str = num.to_fs(4)
     arr = str.chars
-    arr.map { |r| MATCH_TYPES[Integer(r)] }
+    arr.map { MATCH_TYPES[Integer(_1)] }
   end
 end

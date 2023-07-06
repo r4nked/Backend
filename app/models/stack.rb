@@ -63,9 +63,7 @@ class Stack < ApplicationRecord
   before_validation :order_pairs, on: :create
 
   # @private
-  def to_param
-    id.to_fs(36)
-  end
+  def to_param = id.to_fs(36)
 
   # Locates a stack by its base-36 ID.
   #

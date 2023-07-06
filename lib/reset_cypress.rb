@@ -14,27 +14,32 @@ class ResetCypress
   private
 
   def reset
-    models.each { |model| truncate model }
+    models.each { truncate _1 }
+    create_fixtures
     reset_emails
   end
 
-  def response
-    [200, {"Content-Type" => "text/plain"}, ["Cypress reset finished"]]
-  end
+  def response = [200, {"Content-Type" => "text/plain"}, ["Cypress reset finished"]]
 
-  def models
-    ApplicationRecord.subclasses
-  end
+  def models = ApplicationRecord.subclasses
 
   def truncate(model)
     model.connection.execute "TRUNCATE #{model.quoted_table_name} CASCADE"
+    model.connection.execute "ALTER SEQUENCE #{model.sequence_name} RESTART WITH 1"
+  end
+
+  def create_fixtures
+    Stack.create! name:       "Sci-fi shows",
+                  card_names: [
+                      "The Expanse", "Firefly", "Star Trek: Discovery", "Star Trek: The Next Generation",
+                      "Battlestar Galactica", "Star Trek: Deep Space Nine", "Star Trek: Picard", "Enterprise",
+                      "Star Trek: Voyager", "Caprica", "Battlestar Galactica: Blood and Chrome"
+                  ].join("\n")
   end
 
   def reset_emails
-    Dir.glob(maildir.join("*").to_s).each { |f| FileUtils.rm f }
+    Dir.glob(maildir.join("*").to_s).each { FileUtils.rm _1 }
   end
 
-  def maildir
-    Rails.root.join("tmp", "mails")
-  end
+  def maildir = Rails.root.join("tmp", "mails")
 end

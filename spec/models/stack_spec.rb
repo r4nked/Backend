@@ -56,7 +56,7 @@ RSpec.describe Stack do
         end
       end
 
-      expect(stack.rank(matches).map(&:first).map(&:name)).to eql(stack.cards.order(name: :desc).pluck(:name))
+      expect(stack.rank(matches).map { _1.first.name }).to eql(stack.cards.order(name: :desc).pluck(:name))
     end
   end
 
