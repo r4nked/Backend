@@ -42,7 +42,6 @@ group :test do
   # ISOLATION
   gem "database_cleaner"
   gem "ffaker"
-  gem "timecop"
   gem "webmock"
 
   # ASSERTIONS

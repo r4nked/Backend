@@ -37,6 +37,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
+  config.include ActiveSupport::Testing::TimeHelpers
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -83,12 +84,7 @@ RSpec.configure do |config|
     end
   end
 
-  # Timecop
-  config.around :each do |example|
-    Timecop.freeze DEFAULT_TIME
-    example.run
-    Timecop.return
-  end
+  config.before(:each) { travel_to DEFAULT_TIME }
 
   # FakeFS
   # config.around(:each) { |ex| FakeFS.with_fresh { ex.run } }
