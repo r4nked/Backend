@@ -49,7 +49,7 @@ class Stack < ApplicationRecord
   #   this stack is also created.
   attr_accessor :card_names
 
-  serialize :pairs_order, JSON
+  serialize :pairs_order, coder: JSON
 
   has_many :cards, dependent: :delete_all, inverse_of: :stack
 
@@ -78,6 +78,8 @@ class Stack < ApplicationRecord
 
   K = 32.0
   private_constant :K
+
+  # rubocop:disable YARD/TagTypeSyntax,YARD/CollectionStyle
 
   # Uses the Elo algorithm to rank cards given an array of match results.
   # `matches` is an array of the same size as `pairs_order`. For each element
@@ -126,6 +128,8 @@ class Stack < ApplicationRecord
 
     return cards.order(id: :asc).zip(ratings).sort_by(&:last).reverse
   end
+
+  # rubocop:enable YARD/TagTypeSyntax,YARD/CollectionStyle
 
   private
 

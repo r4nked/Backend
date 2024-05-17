@@ -41,13 +41,13 @@ RSpec.describe "/stacks" do
 
     it "handles validation errors" do
       post "/stacks.json", params: {stack: {name: " ", card_names: "one\ntwo\nthree"}}
-      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to have_http_status(:unprocessable_content)
       expect(response.body).to eql('{"errors":{"name":[{"error":"blank"}]}}')
     end
 
     it "handles validation errors on a card" do
       post "/stacks.json", params: {stack: {name: "My Stack", card_names: ["one", "two"*100, "three"].join("\n")}}
-      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to have_http_status(:unprocessable_content)
       json = response.parsed_body
       expect(json["errors"]["cards"].first["error"]).to eql("invalid")
     end
