@@ -53,3 +53,5 @@ group :doc do
   gem "redcarpet", require: nil
   gem "yard", require: nil
 end
+
+gem "dockerfile-rails", ">= 1.6", group: :development

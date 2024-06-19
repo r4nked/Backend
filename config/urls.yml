@@ -11,6 +11,6 @@ cypress:
   https: false
   frontend: "http://localhost:5100"
 production:
-  host: ranked.fly.dev
+  host: ranked-app.fly.dev
   https: true
-  frontend: "https://r4nked.github.io"
+  frontend: "https://ranked.fly.dev"

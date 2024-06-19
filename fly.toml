@@ -1,55 +1,61 @@
-# fly.toml file generated for ranked on 2022-12-05T14:56:13-06:00
+# fly.toml app configuration file generated for ranked-app on 2024-06-19T10:28:26-07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
-app = "ranked"
-kill_signal = "SIGINT"
-kill_timeout = 5
-processes = []
-
-[build]
-  [build.args]
-    BUILD_COMMAND = "bin/rails fly:build"
-    SERVER_COMMAND = "bin/rails fly:server"
-
-[deploy]
-  release_command = "bin/rails fly:release"
-
-[env]
-  PORT = "8080"
+app = 'ranked-app'
+primary_region = 'sjc'
+kill_signal = 'SIGINT'
+kill_timeout = '5s'
+console_command = '/rails/bin/rails console'
 
 [experimental]
-  allowed_public_ports = []
   auto_rollback = true
 
+[build]
+
+[deploy]
+  release_command = 'bin/rails fly:release'
+
+[env]
+  PORT = '8080'
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
 [[services]]
-  http_checks = []
+  protocol = 'tcp'
   internal_port = 8080
-  processes = ["app"]
-  protocol = "tcp"
-  script_checks = []
+  processes = ['app']
+
+  [[services.ports]]
+    port = 80
+    handlers = ['http']
+    force_https = true
+
+  [[services.ports]]
+    port = 443
+    handlers = ['tls', 'http']
+
   [services.concurrency]
+    type = 'connections'
     hard_limit = 25
     soft_limit = 20
-    type = "connections"
-
-  [[services.ports]]
-    force_https = true
-    handlers = ["http"]
-    port = 80
-
-  [[services.ports]]
-    handlers = ["tls", "http"]
-    port = 443
 
   [[services.tcp_checks]]
-    grace_period = "1s"
-    interval = "15s"
-    restart_limit = 0
-    timeout = "2s"
-
-[[statics]]
-  guest_path = "/app/public"
-  url_prefix = "/"
+    interval = '15s'
+    timeout = '2s'
+    grace_period = '1s'
 
 [[vm]]
-  size = "shared-cpu-1x"
-  memory = "512mb"
+  size = 'shared-cpu-1x'
+  memory = '512mb'
+
+[[statics]]
+  guest_path = '/app/public'
+  url_prefix = '/'
