@@ -4,7 +4,7 @@
 
 ActiveSupport::Reloader.to_prepare do
   ApplicationController.renderer.defaults.merge!(
-    http_host: Rails.application.config.x.urls[:host],
-    https:     Rails.application.config.x.urls[:https]
+    http_host: Rails.application.config.x.urls[:backend][:host],
+    https:     Rails.application.config.x.urls[:backend][:https]
   )
 end

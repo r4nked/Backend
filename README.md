@@ -32,14 +32,15 @@ The back-end requires Ruby 3.3 and PostgreSQL. You can check out the repository
 and run `bundle` to install all dependencies, then `rails setup` to set up
 the development and test databases.
 
-Run `rails server` to run the development server. The production files are
-deployed automatically by Fly.io once the Travis CI build passes.
+Run `rails server -b 127.0.0.1` to run the development server. You must bind to
+127.0.0.1 instead of the default localhost. The production files are deployed
+automatically by Fly.io once the Travis CI build passes.
 
 In order to develop with the full stack, you will need to check out and run the
 front-end too. An example Procfile that does this:
 
 ```
-backend: cd Backend && rvm 3.3.4@ranked exec rails server
+backend: cd Backend && rvm 3.3.4@ranked exec rails server -b 127.0.0.1
 frontend: cd Frontend && yarn dev
 ```
 

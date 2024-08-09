@@ -1,16 +1,31 @@
 development:
-  host: "localhost:5000"
-  https: false
-  frontend: "http://localhost:5100"
+  backend:
+    host: "127.0.0.1:5000"
+    https: false
+  frontend:
+    host: "127.0.0.1:5173"
+    https: false
+
 test:
-  host: test.host
-  https: false
-  frontend: "http://frontend.test.host"
+  backend:
+    host: test.host
+    https: false
+  frontend:
+    host: "frontend.test.host"
+    https: false
+
 cypress:
-  host: "localhost:5000"
-  https: false
-  frontend: "http://localhost:5100"
+  backend:
+    host: "127.0.0.1:5000"
+    https: false
+  frontend:
+    host: "127.0.0.1:4173"
+    https: false
+
 production:
-  host: ranked-app.fly.dev
-  https: true
-  frontend: "https://ranked.fly.dev"
+  backend:
+    host: ranked-app.fly.dev
+    https: true
+  frontend:
+    host: ranked.fly.dev
+    https: true

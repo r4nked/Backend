@@ -10,5 +10,8 @@ Rails.application.routes.draw do
     get "cypress/reset" => ResetCypress.new
   end
 
-  root to: redirect(Rails.application.config.x.urls[:frontend])
+  root to: redirect(
+             (Rails.application.config.x.urls[:frontend][:https] ? "https://" : "http://") +
+               Rails.application.config.x.urls[:frontend][:host]
+           )
 end
