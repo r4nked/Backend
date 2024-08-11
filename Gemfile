@@ -6,6 +6,7 @@ ruby "3.3.4"
 
 # FRAMEWORK
 gem "bootsnap"
+gem "kredis"
 gem "puma"
 gem "rack-cors"
 gem "rails"
@@ -24,6 +25,9 @@ gem "jbuilder"
 gem "bugsnag"
 
 group :development do
+  # LINTING
+  gem "brakeman"
+
   # ERRORS
   gem "binding_of_caller"
 
