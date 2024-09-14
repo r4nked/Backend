@@ -53,5 +53,7 @@ module Ranked
     config.generators.system_tests = nil
 
     config.x.urls = config_for(:urls)
+
+    config.host_authorization = {exclude: ->(request) { request.path.start_with?("/up") }}
   end
 end

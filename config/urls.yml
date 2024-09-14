@@ -24,7 +24,7 @@ cypress:
 
 production:
   backend:
-    host: ranked-app.fly.dev
+    host: ranked-backend.fly.dev
     https: true
   frontend:
     host: ranked.fly.dev
