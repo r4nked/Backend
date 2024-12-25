@@ -73,6 +73,6 @@ class StacksController < ApplicationController
     num = Integer(m, 36)
     str = num.to_fs(4)
     arr = str.chars
-    arr.map { MATCH_TYPES[Integer(_1)] }
+    arr.map { MATCH_TYPES[Integer(it)] }
   end
 end
