@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   if Rails.env.cypress?
     require "reset_cypress"
-    get "cypress/reset" => ResetCypress.new
+    get "__cypress__/reset" => ResetCypress.new
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
