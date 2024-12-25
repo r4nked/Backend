@@ -14,7 +14,7 @@ class ResetCypress
   private
 
   def reset
-    models.each { truncate _1 }
+    models.each { truncate it }
     create_fixtures
     reset_emails
   end
@@ -38,7 +38,7 @@ class ResetCypress
   end
 
   def reset_emails
-    Dir.glob(maildir.join("*").to_s).each { FileUtils.rm _1 }
+    Dir.glob(maildir.join("*").to_s).each { FileUtils.rm it }
   end
 
   def maildir = Rails.root.join("tmp", "mails")
