@@ -22,7 +22,8 @@ gem "responders"
 gem "jbuilder"
 
 # ERRORS
-gem "bugsnag"
+gem "sentry-rails"
+gem "sentry-ruby"
 
 group :development do
   # LINTING
