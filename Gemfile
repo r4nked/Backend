@@ -24,6 +24,7 @@ gem "jbuilder"
 # ERRORS
 gem "sentry-rails"
 gem "sentry-ruby"
+gem "vernier"
 
 group :development do
   # LINTING
